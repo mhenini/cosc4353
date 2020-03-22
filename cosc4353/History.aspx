@@ -80,7 +80,7 @@
       <ul class="nav navbar-nav">
         <li><a href="Profile.aspx">Profile</a></li>
         <li class="active"><a href="#">History</a></li>
-        <li><a href="#">Fuel Quote</a></li>
+        <li><a href="Form.aspx">Fuel Quote</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="Login.aspx"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
