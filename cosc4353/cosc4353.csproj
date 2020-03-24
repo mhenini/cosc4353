@@ -69,6 +69,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\LoginPage.mdf" />
+    <Content Include="App_Data\LoginPage_log.ldf">
+      <DependentUpon>LoginPage.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -77,6 +81,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Form.aspx" />
     <Content Include="History.aspx" />
+    <Content Include="loggg.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Register.aspx" />
@@ -205,6 +210,13 @@
     </Compile>
     <Compile Include="History.aspx.designer.cs">
       <DependentUpon>History.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="loggg.aspx.cs">
+      <DependentUpon>loggg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="loggg.aspx.designer.cs">
+      <DependentUpon>loggg.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
