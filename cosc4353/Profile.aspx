@@ -1,34 +1,56 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="cosc4353.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="cosc4353.Profile" %>
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<title>Bootstrap Example</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Profile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
+
+    body, html {height: 100%;}
+
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
+      background-color: white;
+      border-color: white;
+    }
+
+    #unac {
+        color: black;
     }
     
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
+    .row.content {height: 100%}
     
     /* Set gray background color and 100% height */
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
-      height: 100%;
+      min-height: 100%;
+      margin-bottom: -9999px;
+      padding-bottom: 9999px;
+    }
+
+    .active {
+        color: lightblue !important;
+    }
+
+    .frontpart {
+        min-height: 100%;
+        overflow: hidden;
     }
     
     /* Set black background color, white text and some padding */
     footer {
+      bottom: 0px;
       background-color: #555;
       color: white;
       padding: 15px;
@@ -38,7 +60,7 @@
     @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
-        padding: 15px;
+        padding-top: 15px;
       }
       .row.content {height:auto;} 
     }
@@ -46,9 +68,7 @@
 </head>
 <body>
 
-    <form id="form1" runat="server">
-
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">  <!-- Navigation Bar -->
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -60,44 +80,70 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Login/Register</a></li>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">History</a></li>
+        <li class="active"><a href="Profile.aspx">Profile</a></li>
+        <li><a href="History.aspx">History</a></li>
         <li><a href="#">Fuel Quote</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="Login.aspx"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
   
-<div class="container-fluid text-center">    
-  <div class="row content">
+<div class="container-fluid text-center frontpart">    
+  <div class="row">
     <div class="col-sm-2 sidenav">
+      <p><a href="#">Change Password</a></p>
+      <p><a href="#">Edit Profile Info</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1> Client Account Password Reset Screen </h1>
-      <p>If you would like to reset or change your password, please enter the current password along with the new password. NOTE: The Confirm New Password must match the New Password entry.</p>
-        <p>&nbsp;</p>
-        <br />
-<center>Change Your Password<br />
-    Password:<asp:TextBox ID="TextBox1" runat="server" Width="185px"></asp:TextBox>
-        <br />
-    <asp:Label ID="Label1" runat="server" Text="Enter a new Password:"></asp:Label>
-    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-        <br />
-    <asp:Label ID="Label2" runat="server" Text="Confirm New Password"></asp:Label>
-    <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
-        </center>
+      <div class="row">
+        <div class="col-sm-12">
+            <h1>Welcome, John Smith!</h1>
+            <hr>
+            <br>
+            <br>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-12 text-center">
+              <a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit Profile Info</a>
+              <br />
+              <a href="#"><span class="glyphicon glyphicon-repeat"></span> Change Password</a>
+          </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-sm-6 text-left">
+            <h4>Personal Info:</h4>
+            <ul class="list-group">
+                <li class="list-group-item">Name: John Smith</li>
+                <li class="list-group-item">Address 1: 543 Trace Ln.</li>
+                <li class="list-group-item">Address 2:</li>
+                <li class="list-group-item">City: Houston</li>
+                <li class="list-group-item">State: TX</li>
+                <li class="list-group-item">Zip: 77026</li>
+            </ul>
+        </div>
+        <div class="col-sm-6 text-left">
+            <h4>Account Info:</h4>
+            <ul class="list-group">
+                <li class="list-group-item">Username: JSmith25</li>
+                <li class="list-group-item">Email: jsmith24@AOL.com</li>
+                <li class="list-group-item">Company: BP</li>
+            </ul>
+        </div>
+    </div>
+    </div>
     </div>
     <div class="col-sm-2 sidenav">
-      </div>
     </div>
   </div>
 </div>
-    </form>
+
+
 </body>
 </html>
-
-
