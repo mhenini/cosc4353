@@ -86,7 +86,7 @@
 
 
       <p> <strong>
-          Username:<asp:TextBox ID="TextBoxUsername" runat="server" ></asp:TextBox>
+          Username:<asp:TextBox ID="LoginBox" runat="server"></asp:TextBox>
           </strong>
           <span style ="margin-left: 10em;">
           <strong><asp:Label ID="Label3" runat="server" Text="Create a Username:"></asp:Label></strong>
@@ -94,7 +94,7 @@
          </span> </p>
 
         <p><strong>
-            Password:<asp:TextBox ID="TextBoxPassword" runat="server" TextMode="Password"></asp:TextBox>
+            Password:<asp:TextBox ID="PassWordBox" runat="server" TextMode="Password"></asp:TextBox>
             </strong>
            <span style ="margin-left: 10em;">
           <strong><asp:Label ID="Label4" runat="server" Text="Create a Password:"></asp:Label></strong>
@@ -116,9 +116,8 @@
             <span style ="margin-left: 35em;">
             <strong><asp:Button ID="Button2" runat="server" Text="Register" Width="147px" OnClick="Button2_Click" /></strong>
             </span></p>
-        <p><strong>
-            <asp:Label ID="Label6" runat="server" Visible="False" ForeColor="Red"></asp:Label>
-        </strong>
+        <p>
+            <asp:Label ID="Label6" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
           </p>
     </div>
     <div class="col-sm-2 sidenav">

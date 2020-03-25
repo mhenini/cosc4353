@@ -24,13 +24,13 @@ namespace cosc4353
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// TextBoxUsername control.
+        /// LoginBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxUsername;
+        protected global::System.Web.UI.WebControls.TextBox LoginBox;
 
         /// <summary>
         /// Label3 control.
@@ -51,13 +51,13 @@ namespace cosc4353
         protected global::System.Web.UI.WebControls.TextBox TxtBoxNewU;
 
         /// <summary>
-        /// TextBoxPassword control.
+        /// PassWordBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPassword;
+        protected global::System.Web.UI.WebControls.TextBox PassWordBox;
 
         /// <summary>
         /// Label4 control.

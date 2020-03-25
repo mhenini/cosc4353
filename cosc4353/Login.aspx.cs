@@ -22,7 +22,7 @@ namespace cosc4353
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginPageConnectionString"].ConnectionString);
             con.Open();
-            string user = "select count(*) FROM login WHERE username= '" + TextBoxUsername.Text + "'";
+            string user = "select count(*) FROM login WHERE username= '" + LoginBox.Text + "'";
             SqlCommand com = new SqlCommand(user, con);
             int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
             con.Close();
@@ -30,14 +30,13 @@ namespace cosc4353
             if(temp == 1)
             {
                 con.Open();
-                string pass = "select password FROM login WHERE username= '" + TextBoxUsername.Text + "'";
+                string pass = "select password FROM login WHERE username= '" + LoginBox.Text + "'";
                 SqlCommand passCom = new SqlCommand(pass, con);
                 string password = passCom.ExecuteScalar().ToString();
 
-                if(password == TextBoxPassword.Text)
+                if(password == PassWordBox.Text)
                 {
-                    Label6.Text = "Login Sucessful";
-                    Label6.Visible = true;
+                    Response.Redirect("Profile.aspx");
                 }
                 else
                 {
@@ -69,8 +68,7 @@ namespace cosc4353
             com.Parameters.AddWithValue("@cpass", ConfirmTextBox1.Text);
 
             com.ExecuteNonQuery();
-            Response.Write("registration is sucessful");
-
+            Response.Redirect("Profile.aspx");
 
 
 
