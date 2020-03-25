@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Form.aspx.cs" Inherits="cosc4353.Form" %>
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Form.aspx.cs" Inherits="cosc4353.Form" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +9,51 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            <%--validate gallons field--%>
+            $('#gallons').keyup(function () {
+                if ($('#gallons').val() > 0 || $('#gallons').val() == '') {
+                    $('#error').attr('hidden', 'hidden');
+                } else {
+                    $('#error').removeAttr('hidden');
+                }
+            });
+
+            <%--enable getPrice button--%>
+            $('input, textarea').keyup(function () {
+
+                var empty = false;
+
+                $('input, textarea').each(function () {
+                    if ($(this).prop('required') && $(this).val() == '') {
+                        empty = true;
+                    }
+                });
+
+                if (empty || !$('#error').prop('hidden')) {
+                    $('#getPrice').attr('disabled', 'disabled');
+                } else {
+                    $('#getPrice').removeAttr('disabled');
+                }
+
+                <%--enable submitPrice button--%>
+                var empty1 = false;
+
+                if ($('#price').val() == '' || $('#total').val() == '') {
+                    empty1 = true;
+                }
+
+                if (empty || empty1 || $('#getPrice').prop('disabled')) {
+                    $('#submitPrice').attr('disabled', 'disabled');
+                } else {
+                    $('#submitPrice').removeAttr('disabled');
+                }
+            });
+        });
+    </script>
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
     <link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" rel="stylesheet" />
     <style>
@@ -60,12 +105,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <a class="navbar-brand" href="#">SD</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="Profile.aspx">Home</a></li>
+                    <li><a href="Profile.aspx">Profile</a></li>
                     <li><a href="History.aspx">History</a></li>
-                    <li class="active"><a href="Form.aspx">Fuel Quote Form</a></li>
+                    <li class="active"><a href="Form.aspx">Fuel Quote</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="Login.aspx"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
@@ -84,59 +130,126 @@
                 <p>Complete all fields and then click on "Get Price" to view the suggested price. Click on "Submit Quote" to save the quote.</p>
                 <hr>
 
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Gallons Requested:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="gallons" type="text" placeholder="Input a number > 0..." required="required">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Delivery Address:</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" id="address" type="text" placeholder="Address from profile..." disabled>
-                        </div>
-                    </div>
+                <form id="f" class="form-horizontal" runat="server">
 
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Delivery Date:</label>
-                        <div class="col-sm-10">
-                            <div class='input-group date' id='datetimepicker'>
-                                <input type='text' class="form-control" required="required" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                        <script type="text/javascript">
-                            $(function () {
-                                $('#datetimepicker').datetimepicker({
-                                    format: 'L',
-                                    minDate: moment()
-                                });
+                    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                    <script type="text/javascript">
+                        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+                        function EndRequestHandler(sender, args) {
+                             //Binding Code Again
+                            <%--validate gallons field--%>
+                            $('#gallons').keyup(function () {
+                                if ($('#gallons').val() > 0 || $('#gallons').val() == '') {
+                                    $('#error').attr('hidden', 'hidden');
+                                } else {
+                                    $('#error').removeAttr('hidden');
+                                }
                             });
-                        </script>
-                    </div>
 
-                    <fieldset disabled>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Suggested Price:</label>
-                            <div class="col-sm-10">
-                                <input type="text" id="price" class="form-control" placeholder="Suggested Price">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label">Total Amount Due:</label>
-                            <div class="col-sm-10">
-                                <input type="text" id="total" class="form-control" placeholder="Total Price">
-                            </div>
-                        </div>
-                    </fieldset>
+                            <%--enable getPrice button--%>
+                            $('input, textarea').keyup(function () {
 
-                    <button type="submit" class="btn btn-default" disabled="disabled">Get Price</button>
-                    <button type="submit" class="btn btn-default" disabled="disabled">Submit Quote</button>
+                                var empty = false;
+
+                                $('input, textarea').each(function () {
+                                    if ($(this).prop('required') && $(this).val() == '') {
+                                        empty = true;
+                                    }
+                                });
+
+                                if (empty || !$('#error').prop('hidden')) {
+                                    $('#getPrice').attr('disabled', 'disabled');
+                                } else {
+                                    $('#getPrice').removeAttr('disabled');
+                                }
+
+                                <%--enable submitPrice button--%>
+                                var empty1 = false;
+
+                                if ($('#price').val() == '' || $('#total').val() == '') {
+                                    empty1 = true;
+                                }
+
+                                if (empty || empty1 || $('#getPrice').prop('disabled')) {
+                                    $('#submitPrice').attr('disabled', 'disabled');
+                                } else {
+                                    $('#submitPrice').removeAttr('disabled');
+                                }
+                            });
+                        }
+                    </script>
+                    
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Gallons Requested:</label>
+                                <div class="col-sm-10">
+                                    <input runat="server" class="form-control" id="gallons" type="text" placeholder="Input a number > 0..." required="required">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Delivery Address:</label>
+                                <div class="col-sm-10">
+                                    <input runat="server" class="form-control" id="address" type="text" placeholder="Address from profile..." disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Delivery Date:</label>
+                                <div class="col-sm-10">
+                                    <div class='input-group date' id='datetimepicker'>
+                                        <input runat="server" id="date" type='text' class="form-control" required="required" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <script type="text/javascript">
+                                    $(function () {
+                                        $('#datetimepicker').datetimepicker({
+                                            format: 'L',
+                                            minDate: moment(),
+                                        });
+                                    });
+
+                                    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+                                    function EndRequestHandler(sender, args) {
+                                        //Binding Code Again
+                                        $('#datetimepicker').datetimepicker({
+                                            format: 'L',
+                                            minDate: moment().millisecond(0).second(0).minute(0).hour(0),
+                                            useCurrent: false
+                                        });
+                                    }
+                                </script>
+                            </div>
+
+                            <fieldset disabled>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Suggested Price:</label>
+                                    <div class="col-sm-10">
+                                        <input runat="server" type="text" id="price" class="form-control" placeholder="Suggested Price">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Total Amount Due:</label>
+                                    <div class="col-sm-10">
+                                        <input runat="server" type="text" id="total" class="form-control" placeholder="Total Price">
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <asp:Button ID="getPrice" runat="server" class="btn btn-default" disabled="disabled" Text="Get Price" OnClick="getPrice_Click" />
+                            <asp:Button ID="submitPrice" runat="server" class="btn btn-default" disabled="disabled" Text="Submit Quote" OnClick="savePrice_Click" />
+                            <br />
+                            <label id="error" style="color: red" hidden="hidden">Error: Gallons requested must be a number greater than 0.</label>
+
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+
                 </form>
-                <hr>   
+                <hr>
             </div>
             <div class="col-sm-2 sidenav">
             </div>
