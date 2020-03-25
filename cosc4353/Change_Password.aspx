@@ -1,9 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="History.aspx.cs" Inherits="cosc4353.History" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Change_Password.aspx.cs" Inherits="cosc4353.Change_Password" %>
+
+<!DOCTYPE html>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Histroy</title>
+  <title>Profile</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -60,7 +62,7 @@
         height: auto;
         padding-top: 15px;
       }
-      .row.content {height:100%;} 
+      .row.content {height:auto;} 
     }
   </style>
 </head>
@@ -78,9 +80,9 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="Profile.aspx">Profile</a></li>
-        <li class="active"><a href="#">History</a></li>
-        <li><a href="Form.aspx">Fuel Quote</a></li>
+        <li class="active"><a href="Profile.aspx">Profile</a></li>
+        <li><a href="History.aspx">History</a></li>
+        <li><a href="#">Fuel Quote</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="Login.aspx"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -90,31 +92,34 @@
 </nav>
   
 <div class="container-fluid text-center frontpart">    
-  <div class="row">
-    <div class="col-sm-2 sidenav"></div>
-    <div class="col-sm-8"> 
-      <h1>Quote Price History</h1>
-      <hr style="color:lightblue;">
-      <br>
-      <br>
-      <h4>Fuel Quote From: 12/24/2019</h4>
-      <ul class="list-group list-group-horizontal">
-      <li class="list-group-item">Requested: 11 Gallons</li>
-      <li class="list-group-item">Deliver Address: 534 Trace Ln.</li>
-      <li class="list-group-item">Delivery Date: 01/23/2020</li>
-      <li class="list-group-item">Suggested Price: $50</li>
-      </ul>
-      <h2>Test to see if C# code is working</h2>
-      <p>
-          This is an0other test <br />
-          That I wanted to do
-      </p>
-      <asp:Label id="text1" Text=" " runat="server"></asp:Label>
+    <div class="row text-center">
+        <div class="col-sm-8">
+            <h1>Change Password</h1>
+            <hr />
+        </div>
+    </div> 
+    <div class="row text-center">
+       <div class="col-sm text-right">
+           <form runat="server" id="PassForm">
+              <h3>
+                  Current Password:
+              </h3>
+              <asp:TextBox ID="OldPassword" runat="server"></asp:TextBox>
+              <h3>
+                  New Password:
+              </h3>
+              <asp:TextBox ID="NewPassword1" runat="server"></asp:TextBox>
+              <h3>
+                  Confirm New Password:
+              </h3>
+              <asp:TextBox ID="NewPassword2" runat="server"></asp:TextBox>
+               <asp:Button ID="SubmitButton" runat="server" Text="Submit" OnClick="ChangePassClick" />
+           </form>
+           <asp:Label ID="Correct" Text=" " runat="server"></asp:Label>
+       </div>
     </div>
-    <div class="col-sm-2 sidenav">
-    </div>
-  </div>
 </div>
+
 
 
 </body>
