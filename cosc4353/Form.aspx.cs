@@ -16,7 +16,7 @@ namespace cosc4353
         // This is temp for testing. The user name should be pullen in from a session var.
         // Ex:  string user = (string)Session["username"];
         // Session var can be set from the login page when user successfully logs in
-        string user = (string)Session["user"];
+        string user;
 
         private double locationFactor;
         private double historyFactor;
@@ -32,6 +32,7 @@ namespace cosc4353
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            user = (string)Session["user"]
             SqlConnection conn = new SqlConnection(connStr);
             // load delivery address from client info table
             conn.Open();
