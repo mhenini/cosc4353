@@ -36,6 +36,7 @@ namespace cosc4353
 
                 if(password == PassWordBox.Text)
                 {
+                    Session["user"] = LoginBox.Text;
                     Response.Redirect("Profile.aspx");
                 }
                 else
@@ -68,6 +69,7 @@ namespace cosc4353
             com.Parameters.AddWithValue("@cpass", ConfirmTextBox1.Text);
 
             com.ExecuteNonQuery();
+            Session["user"] = TxtBoxNewU.Text;
             Response.Redirect("Profile.aspx");
 
 
