@@ -16,7 +16,7 @@ namespace cosc4353
         // This is temp for testing. The user name should be pullen in from a session var.
         // Ex:  string user = (string)Session["username"];
         // Session var can be set from the login page when user successfully logs in
-        string user = "a";
+        string user = (string)Session["user"];
 
         private double locationFactor;
         private double historyFactor;
