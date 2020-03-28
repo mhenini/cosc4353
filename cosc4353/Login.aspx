@@ -103,7 +103,7 @@
 
 
         <p><strong>
-            <asp:Button ID="Button1" runat="server" Text="Login" Width="147px" OnClick="Button1_Click" />
+            <asp:Button ID="loginButton" runat="server" Text="Login" Width="147px" OnClick="loginButton_Click" />
         </strong>
           <span style ="margin-left: 18.5em;">
         <strong><asp:Label ID="Label5" runat="server" Text="Confirm Password:"></asp:Label>
@@ -114,11 +114,15 @@
         <p><strong>
            </strong>
             <span style ="margin-left: 35em;">
-            <strong><asp:Button ID="Button2" runat="server" Text="Register" Width="147px" OnClick="Button2_Click" /></strong>
+            <strong><asp:Button ID="RegButton" runat="server" Text="Register" Width="147px" OnClick="RegButton_Click" /></strong>
             </span></p>
         <p>
             <asp:Label ID="Label6" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
-          </p>
+            <span style ="margin-left: 18.5em;">
+            <asp:Label ID="Label7" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
+            </span></p>
+
+         
     </div>
     <div class="col-sm-2 sidenav">
       </div>
