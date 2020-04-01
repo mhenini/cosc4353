@@ -130,7 +130,7 @@
                 <p>Complete all fields and then click on "Get Price" to view the suggested price. Click on "Submit Quote" to save the quote.</p>
                 <hr>
 
-                <form id="f" class="form-horizontal" runat="server">
+                <form class="form-horizontal" runat="server">
 
                     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                     <script type="text/javascript">
