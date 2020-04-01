@@ -16,7 +16,7 @@
                     <asp:BoundField DataField="confirmPassword" HeaderText="confirmPassword" SortExpression="confirmPassword" />
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LoginPageConnectionString %>" SelectCommand="SELECT * FROM [UserLog]"></asp:SqlDataSource>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LoginPageConnectionString %>" SelectCommand="SELECT * FROM [login]"></asp:SqlDataSource>
         </div>
     </form>
 </body>

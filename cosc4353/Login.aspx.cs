@@ -22,7 +22,7 @@ namespace cosc4353
         {
             SqlConnection link = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginPageConnectionString"].ConnectionString);
             link.Open();
-            string verifyUser = "select count(*) FROM UserLog WHERE username= '" + LoginBox.Text + "'";
+            string verifyUser = "select count(*) FROM login WHERE username= '" + LoginBox.Text + "'";
             SqlCommand com = new SqlCommand(verifyUser, link);
             int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
             link.Close();
@@ -30,12 +30,13 @@ namespace cosc4353
             if(temp == 1)
             {
                 link.Open();
-                string verifyPass = "select password FROM UserLog WHERE username= '" + LoginBox.Text + "'";
+                string verifyPass = "select password FROM login WHERE username= '" + LoginBox.Text + "'";
                 SqlCommand passCom = new SqlCommand(verifyPass, link);
                 string password = passCom.ExecuteScalar().ToString();
 
                 if(password == PassWordBox.Text)
                 {
+                    Session["user"] = LoginBox.Text;
                     Response.Redirect("Profile.aspx");
                 }
                 else
@@ -62,58 +63,47 @@ namespace cosc4353
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginPageConnectionString"].ConnectionString);
             con.Open();
-            string verifyUser = "select count(*) FROM UserLog WHERE username= '" + TxtBoxNewU.Text + "'";
+            string verifyUser = "select count(*) FROM login WHERE username= '" + TxtBoxNewU.Text + "'";
             SqlCommand com = new SqlCommand(verifyUser, con);
             int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
             con.Close();
 
             if (temp != 1)
             {
-                //Label7.Text= "Username is either taken or you are already registered.";
-                //Label7.Visible = true;
-                
                 con.Open();
-                string pass = "select count(*) FROM UserLog WHERE password= '" + TextBoxNewPass.Text + "'";
-                SqlCommand passComm = new SqlCommand(pass, con);
-                string passwordReg = passComm.ExecuteScalar().ToString();
-                string confPass = ConfirmTextBox1.ToString();
+                string passwordReg = TextBoxNewPass.Text;
+                string confirmPass = ConfirmTextBox1.Text;
 
-                if(passwordReg.Equals(confPass))
+                if (passwordReg.Length < 8)
                 {
-                    string insertQuery = "insert into UserLog (username,password,confirmPassword) values (@user, @password, @cpass)";
+                    Label7.Text = "Pasword length is too short. Please enter a longer password";
+                    Label7.Visible = true;
+
+                }
+
+                if(passwordReg != confirmPass)
+                {
+                    Label7.Text = "Passwords do not match.Please try again";
+                    Label7.Visible = true;
+                }
+
+                else
+                {
+                    string insertQuery = "insert into login (username,password,confirmPassword) values (@user, @password, @cpass)";
                     SqlCommand comm = new SqlCommand(insertQuery, con);
                     comm.Parameters.AddWithValue("@user", TxtBoxNewU.Text);
                     comm.Parameters.AddWithValue("@password", TextBoxNewPass.Text);
                     comm.Parameters.AddWithValue("@cpass", ConfirmTextBox1.Text);
-
                     comm.ExecuteNonQuery();
                     Label7.Text = "Registraion is Sucessful. Please login now.";
                     Label7.Visible = true;
 
                 }
-                else
-                {
-                    Label7.Text = "Paswords do not match.";
-                    Label7.Visible = true;
-
-                }
-
+                
             }
 
             else
             {
-               /* 
-                string insertQuery = "insert into UserLog (username,password,confirmPassword) values (@user, @password, @cpass)";
-                SqlCommand comm = new SqlCommand(insertQuery, con);
-                comm.Parameters.AddWithValue("@user", TxtBoxNewU.Text);
-                comm.Parameters.AddWithValue("@password", TextBoxNewPass.Text);
-                comm.Parameters.AddWithValue("@cpass", ConfirmTextBox1.Text);
-
-                comm.ExecuteNonQuery();
-                Label7.Text = "Registraion is Sucessful. Please login now.";
-                Label7.Visible = true;
-                */
-
                 Label7.Text= "Username is taken.Please enter a different username.";
                 Label7.Visible = true;
 
