@@ -22,17 +22,19 @@ namespace cosc4353
             string State = String.Format("{0}", Request.Form["state"]);
             string Zip = String.Format("{0}", Request.Form["zip"]);
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginPageConnectionString"].ConnectionString);
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["HistoryConnection"].ConnectionString);
             con.Open();
-            string query = "insert into Customer (Fullname, Address1, Address2, City, State, Zip, Username) values (@Fname, @Add1, @Add2, @City, @State, @Zip, @User)";
+            string query = "insert into ClientInfo (Username, Fullname, Address1, Address2, City, State, Zipcode) values (@User, @Fname, @Add1, @Add2, @City, @State, @Zip)";
             SqlCommand cmd = new SqlCommand(query, con);
+
+            cmd.Parameters.AddWithValue("@User", user);
             cmd.Parameters.AddWithValue("@Fname", fullname);
             cmd.Parameters.AddWithValue("@Add1", Address1);
             cmd.Parameters.AddWithValue("@Add2", Address2);
             cmd.Parameters.AddWithValue("@City", City);
             cmd.Parameters.AddWithValue("@State", State);
             cmd.Parameters.AddWithValue("@Zip", Zip);
-            cmd.Parameters.AddWithValue("@User", user);
+            
             cmd.ExecuteNonQuery();
 
             con.Close();
@@ -41,7 +43,6 @@ namespace cosc4353
         protected void Page_Load(object sender, EventArgs e)
         {
             user = (string)Session["user"];
-            if(user == null) { user = "jsam99"; }
         }
     }
 }
