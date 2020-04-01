@@ -78,13 +78,13 @@ namespace cosc4353
         protected global::System.Web.UI.WebControls.TextBox TextBoxNewPass;
 
         /// <summary>
-        /// loginButton control.
+        /// resText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loginButton;
+        protected global::System.Web.UI.WebControls.TextBox resText;
 
         /// <summary>
         /// Label5 control.
@@ -103,6 +103,15 @@ namespace cosc4353
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ConfirmTextBox1;
+
+        /// <summary>
+        /// loginButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button loginButton;
 
         /// <summary>
         /// RegButton control.

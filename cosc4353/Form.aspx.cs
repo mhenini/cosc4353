@@ -33,6 +33,7 @@ namespace cosc4353
         protected void Page_Load(object sender, EventArgs e)
         {
             user = (string)Session["user"];
+            
             SqlConnection conn = new SqlConnection(connStr);
             // load delivery address from client info table
             conn.Open();

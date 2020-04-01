@@ -73,7 +73,7 @@
     </div>
     <div class="col-sm-8 text-left"> 
       <h1>Welcome To Client Fuel Quote Login Page</h1>
-      <p>Hello! Welcome to the Client Login Page. If you are a returning user, please enter your username and password to login into your account. If you are a new user ,please create a username and password. After creating an account, you will be direceted to create a profile.</p>
+      <p>Hello! Welcome to the Client Login Page. If you are a returning user, please enter your username and password to login into your account. If you are a new user ,please create a username and password. After creating an account, you will need to login and create a profile.</p>
       <hr>
 
 
@@ -103,22 +103,23 @@
 
 
         <p><strong>
-            <asp:Button ID="loginButton" runat="server" Text="Login" Width="147px" OnClick="loginButton_Click" />
+            First Login(Y/N):<asp:TextBox ID="resText" runat="server"></asp:TextBox>
         </strong>
-          <span style ="margin-left: 18.5em;">
+          <span style ="margin-left: 6.5em;">
         <strong><asp:Label ID="Label5" runat="server" Text="Confirm Password:"></asp:Label>
             <asp:TextBox ID="ConfirmTextBox1" runat="server" TextMode="Password"></asp:TextBox>
             </strong>
          </span></p>
 
         <p><strong>
+            <asp:Button ID="loginButton" runat="server" Text="Login" Width="147px" OnClick="loginButton_Click" />
            </strong>
-            <span style ="margin-left: 35em;">
+            <span style ="margin-left: 25em;">
             <strong><asp:Button ID="RegButton" runat="server" Text="Register" Width="147px" OnClick="RegButton_Click" /></strong>
             </span></p>
         <p>
             <asp:Label ID="Label6" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
-            <span style ="margin-left: 18.5em;">
+            <span style ="margin-left: 30.5em;">
             <asp:Label ID="Label7" runat="server" ForeColor="Red" Text="Label" Visible="False"></asp:Label>
             </span></p>
 
