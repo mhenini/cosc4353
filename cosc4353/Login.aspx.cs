@@ -33,11 +33,20 @@ namespace cosc4353
                 string verifyPass = "select password FROM login WHERE username= '" + LoginBox.Text + "'";
                 SqlCommand passCom = new SqlCommand(verifyPass, link);
                 string password = passCom.ExecuteScalar().ToString();
+                string conf = resText.Text;
 
                 if(password == PassWordBox.Text)   // if username and password are correct, redirect user to profile page
                 {
                     Session["user"] = LoginBox.Text;
-                    Response.Redirect("Profile.aspx");
+                    if(conf.ToUpper() == "N")
+                    {
+                      Response.Redirect("History.aspx");
+                    }
+                    else
+                    {
+                       Response.Redirect("Profile.aspx");
+                    }
+                    
                 }
                 else
                 {
