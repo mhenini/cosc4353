@@ -38,14 +38,21 @@ namespace cosc4353
                 if(password == PassWordBox.Text)   // if username and password are correct, redirect user to profile page
                 {
                     Session["user"] = LoginBox.Text;
-                    if(conf.ToUpper() == "N")
+                    switch(conf.ToUpper())
                     {
-                      Response.Redirect("History.aspx");
+                        case "Y":
+                            Response.Redirect("Profile.aspx");
+                            break;
+                        case "N":
+                            Response.Redirect("ProfileForm.aspx");
+                            break;
+                        default:
+                            Label6.Text = "Please enter Y or N for the Login Box"; 
+                            Label6.Visible = true;
+                            break;
+
                     }
-                    else
-                    {
-                       Response.Redirect("Profile.aspx");
-                    }
+                  
                     
                 }
                 else
