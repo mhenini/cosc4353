@@ -27,21 +27,21 @@ namespace cosc4353
             int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
             link.Close();
 
-            if(temp == 1)
+            if(temp == 1)    // checks db to see in username exist
             {
                 link.Open();
                 string verifyPass = "select password FROM login WHERE username= '" + LoginBox.Text + "'";
                 SqlCommand passCom = new SqlCommand(verifyPass, link);
                 string password = passCom.ExecuteScalar().ToString();
 
-                if(password == PassWordBox.Text)
+                if(password == PassWordBox.Text)   // if username and password are correct, redirect user to profile page
                 {
                     Session["user"] = LoginBox.Text;
                     Response.Redirect("Profile.aspx");
                 }
                 else
                 {
-                    Label6.Text = "Password is incorrect";
+                    Label6.Text = "Password is incorrect";  //if password doesnt match username in db
                     Label6.Visible = true;
                
                 }
@@ -50,7 +50,7 @@ namespace cosc4353
             }
             else
             {
-                    Label6.Text = "Invalid Username or Password";
+                    Label6.Text = "Invalid Username or Password";   // if username or password is not correct or user doesnt exist in db
                     Label6.Visible = true;
 
             }
@@ -68,26 +68,26 @@ namespace cosc4353
             int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
             con.Close();
 
-            if (temp != 1)
+            if (temp != 1)      
             {
                 con.Open();
                 string passwordReg = TextBoxNewPass.Text;
                 string confirmPass = ConfirmTextBox1.Text;
 
-                if (passwordReg.Length < 8)
+                if (passwordReg.Length < 8)     // password length verification field
                 {
                     Label7.Text = "Pasword length is too short. Please enter a longer password";
                     Label7.Visible = true;
 
                 }
 
-                if(passwordReg != confirmPass)
+                if(passwordReg != confirmPass)  //ensures user enters password correctly twice
                 {
                     Label7.Text = "Passwords do not match.Please try again";
                     Label7.Visible = true;
                 }
 
-                else
+                else      // adds the username and password into the db
                 {
                     string insertQuery = "insert into login (username,password,confirmPassword) values (@user, @password, @cpass)";
                     SqlCommand comm = new SqlCommand(insertQuery, con);
@@ -102,7 +102,7 @@ namespace cosc4353
                 
             }
 
-            else
+            else   //Username is taken or user is already registered in the db
             {
                 Label7.Text= "Username is taken.Please enter a different username.";
                 Label7.Visible = true;
