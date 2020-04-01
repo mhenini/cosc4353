@@ -13,7 +13,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
 
-    body, html {height: 100%;}
+    body, html {height: 100vh;}
 
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -34,9 +34,8 @@
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
-      min-height: 100%;
-      margin-bottom: -9999px;
-      padding-bottom: 9999px;
+      height: 100vh;
+      overflow: hidden;
     }
 
     .active {
@@ -44,8 +43,13 @@
     }
 
     .frontpart {
-        min-height: 100%;
+        height: auto;
         overflow: hidden;
+    }
+
+    .mainbody {
+        padding: 40px;
+        justify-content: space-evenly;
     }
     
     /* Set black background color, white text and some padding */
@@ -82,10 +86,10 @@
       <ul class="nav navbar-nav">
         <li class="active"><a href="Profile.aspx">Profile</a></li>
         <li><a href="History.aspx">History</a></li>
-        <li><a href="#">Fuel Quote</a></li>
+        <li><a href="Form.aspx">Fuel Quote</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="Login.aspx"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="Login.aspx"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
   </div>
@@ -93,54 +97,44 @@
   
 <div class="container-fluid text-center frontpart">    
   <div class="row">
-    <div class="col-sm-2 sidenav">
-      <p><a href="#">Change Password</a></p>
-      <p><a href="#">Edit Profile Info</a></p>
-    </div>
-    <div class="col-sm-8 text-left"> 
-      <div class="row">
-        <div class="col-sm-12">
-            <h1>Welcome, John Smith!</h1>
-            <hr>
-            <br>
-            <br>
-        </div>
-      </div>
-      <div class="row">
-          <div class="col-sm-12 text-center">
-              <a href="#"><span class="glyphicon glyphicon-pencil"></span> Edit Profile Info</a>
-              <br />
-              <a href="#"><span class="glyphicon glyphicon-repeat"></span> Change Password</a>
+      <div class="col-sm-2 sidenav"></div>
+      <div class="col-sm-8">
+          <div class="row text-left">
+              <div class="col-sm-12">
+                  <br />
+                  <br />
+                  <asp:Label ID="welcome" Font-Size="XX-Large" runat="server" Text="Welcome!"></asp:Label>
+              </div>
           </div>
-    </div>
-    <br />
-    <br />
-    <br />
-    <div class="row">
-        <div class="col-sm-6 text-left">
-            <h4>Personal Info:</h4>
-            <ul class="list-group">
-                <li class="list-group-item">Name: John Smith</li>
-                <li class="list-group-item">Address 1: 543 Trace Ln.</li>
-                <li class="list-group-item">Address 2:</li>
-                <li class="list-group-item">City: Houston</li>
-                <li class="list-group-item">State: TX</li>
-                <li class="list-group-item">Zip: 77026</li>
-            </ul>
-        </div>
-        <div class="col-sm-6 text-left">
-            <h4>Account Info:</h4>
-            <ul class="list-group">
-                <li class="list-group-item">Username: JSmith25</li>
-                <li class="list-group-item">Email: jsmith24@AOL.com</li>
-                <li class="list-group-item">Company: BP</li>
-            </ul>
-        </div>
-    </div>
-    </div>
-    </div>
-    <div class="col-sm-2 sidenav">
-    </div>
+          <div class="row">
+              <hr />
+              <br />
+              <br />
+              <div class="col-sm-12 text-center">
+                  <p><a href="Change_Password.aspx"><span class="glyphicon-pencil"> Change Password</span></a></p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-4">
+                  <div class="card">
+                      <div class="view overlay">
+                          <img class="card-img-top" src="clock.png" alt="Card image cap"/>
+                          <a>
+                              <div class="mask waves-effect waves-light rgba-white-slight"></div>
+                          </a>
+                      </div>
+                      <div class="card-body">
+                          <h4 class="card-title">Recent Activity</h4>
+                          <hr />
+                          <a class="link-text">
+                              <h5>Go to History Page<i class="fas fa-angle-double-right ml-2"></i></h5>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-2 sidenav"></div>
   </div>
 </div>
 

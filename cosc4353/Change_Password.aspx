@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Change_Password.aspx.cs" Inherits="cosc4353.Change_Password" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Change_Password.aspx.cs" Inherits="cosc4353.Change_Password" EnableSessionState="True" %>
 
 <!DOCTYPE html>
 
@@ -91,32 +91,50 @@
   </div>
 </nav>
   
-<div class="container-fluid text-center frontpart">    
-    <div class="row text-center">
-        <div class="col-sm-8">
-            <h1>Change Password</h1>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h3>Password Change</h3>
             <hr />
+            <br />
         </div>
-    </div> 
-    <div class="row text-center">
-       <div class="col-sm text-right">
-           <form runat="server" id="PassForm">
-              <h3>
-                  Current Password:
-              </h3>
-              <asp:TextBox ID="OldPassword" runat="server"></asp:TextBox>
-              <h3>
-                  New Password:
-              </h3>
-              <asp:TextBox ID="NewPassword1" runat="server"></asp:TextBox>
-              <h3>
-                  Confirm New Password:
-              </h3>
-              <asp:TextBox ID="NewPassword2" runat="server"></asp:TextBox>
-               <asp:Button ID="SubmitButton" runat="server" Text="Submit" OnClick="ChangePassClick" />
-           </form>
-           <asp:Label ID="Correct" Text=" " runat="server"></asp:Label>
-       </div>
+    </div>
+    <form id="ChangePass" runat="server">
+        <div class="row">
+            <div class="col-sm-10">
+                <h4>Old Password: </h4>
+            </div>
+            <div class="col-sm-10">
+                <asp:TextBox ID="OldPassword" runat="server" AutoCompleteType="None" TextMode="Password"></asp:TextBox>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <h4>New Password: </h4>
+            </div>
+            <div class="col-sm-10">
+                <asp:TextBox ID="NewPassword1" runat="server" AutoCompleteType="None" TextMode="Password"></asp:TextBox>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <h4>Confirm Password: </h4>
+            </div>
+            <div class="col-sm-10">
+                <asp:TextBox ID="NewPassword2" runat="server" AutoCompleteType="None" TextMode="Password"></asp:TextBox>
+            </div>
+        </div>
+        <div class="row">
+            <br />
+            <div class="col-sm-10">
+                <asp:Button ID="submit" Text="Submit" runat="server" OnClick="ChangePassClick" />
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="col-sm-10">
+            <asp:Label ID="Correct" Text="" runat="server"></asp:Label>
+        </div>
     </div>
 </div>
 

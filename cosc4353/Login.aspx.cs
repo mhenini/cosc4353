@@ -70,7 +70,7 @@ namespace cosc4353
 
             com.ExecuteNonQuery();
             Session["user"] = TxtBoxNewU.Text;
-            Response.Redirect("Profile.aspx");
+            Response.Redirect("ProfileForm.aspx");
 
 
 
