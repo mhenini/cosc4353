@@ -69,6 +69,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\fuelSite.mdf" />
+    <Content Include="App_Data\fuelSite_log.ldf">
+      <DependentUpon>fuelSite.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\LoginPage.mdf" />
     <Content Include="App_Data\LoginPage_log.ldf">
       <DependentUpon>LoginPage.mdf</DependentUpon>
@@ -186,7 +190,9 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />

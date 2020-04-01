@@ -16,12 +16,8 @@ namespace cosc4353
         // This is temp for testing. The user name should be pullen in from a session var.
         // Ex:  string user = (string)Session["username"];
         // Session var can be set from the login page when user successfully logs in
-        public Form()
-        {
-            user = (string)Session["user"];
-        }
-
         string user;
+
         private double locationFactor;
         private double historyFactor;
         private double gallonsFactor;
@@ -36,6 +32,7 @@ namespace cosc4353
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            user = (string)Session["user"];
             SqlConnection conn = new SqlConnection(connStr);
             // load delivery address from client info table
             conn.Open();
@@ -139,7 +136,8 @@ namespace cosc4353
             cmd.Parameters.AddWithValue("@TotPrice", totalPrice);
             cmd.ExecuteNonQuery();
 
-            
+            string redirectScript = " window.location.href = 'History.aspx';";
+            ScriptManager.RegisterStartupScript(this, GetType(), "displayalertmessage", "alert('Your Quote was successfully saved. You will be redirected to the History page.');" + redirectScript, true);
 
             conn.Close();
         }        
