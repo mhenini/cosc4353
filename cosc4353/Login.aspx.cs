@@ -90,13 +90,6 @@ namespace cosc4353
                 string passwordReg = TextBoxNewPass.Text;
                 string confirmPass = ConfirmTextBox1.Text;
 
-                if (passwordReg.Length < 8)     // password length verification field
-                {
-                    Label7.Text = "Pasword length is too short. Please enter a longer password";
-                    Label7.Visible = true;
-
-                }
-
                 if(passwordReg != confirmPass)  //ensures user enters password correctly twice
                 {
                     Label7.Text = "Passwords do not match.Please try again";
