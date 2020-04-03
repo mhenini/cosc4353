@@ -67,6 +67,7 @@
     <Compile Include="LoginDemo.cs" />
     <Compile Include="FuelQuoteFormDemo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

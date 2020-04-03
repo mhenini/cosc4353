@@ -25,6 +25,10 @@ namespace cosc4353
             string verifyUser = "select count(*) FROM Login WHERE Username= '" + LoginBox.Text + "'";
             SqlCommand com = new SqlCommand(verifyUser, link);
             int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
+
+            string verifyUser2 = "select count(*) FROM Login WHERE Username= '" + LoginBox.Text + "'";
+            SqlCommand com2 = new SqlCommand(verifyUser, link);
+            int temp2 = Convert.ToInt32(com.ExecuteScalar().ToString());
             link.Close();
 
             if(temp == 1)    // checks db to see in username exist
