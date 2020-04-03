@@ -61,7 +61,7 @@ namespace cosc4353_UnitTests
             // login with any returning user
             driver.FindElement(By.Id("LoginBox")).SendKeys("InStateNoHistory");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("pwd");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
+            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
             driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
@@ -89,7 +89,7 @@ namespace cosc4353_UnitTests
             // login with any returning user
             driver.FindElement(By.Id("LoginBox")).SendKeys("InStateNoHistory");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("pwd");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
+            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
             driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
@@ -120,7 +120,7 @@ namespace cosc4353_UnitTests
             // login with any returning user
             driver.FindElement(By.Id("LoginBox")).SendKeys("OutStateNoHistory");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("pwd");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
+            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
             driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
@@ -151,7 +151,7 @@ namespace cosc4353_UnitTests
             // login with any returning user
             driver.FindElement(By.Id("LoginBox")).SendKeys("InStateHistory");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("pwd");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
+            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
             driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
@@ -183,7 +183,7 @@ namespace cosc4353_UnitTests
             // login with any returning user
             driver.FindElement(By.Id("LoginBox")).SendKeys("InStateNoHistory");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("pwd");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
+            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
             driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
@@ -215,7 +215,7 @@ namespace cosc4353_UnitTests
             // login with any returning user
             driver.FindElement(By.Id("LoginBox")).SendKeys("InStateNoHistory");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("pwd");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
+            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
             driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
@@ -247,7 +247,7 @@ namespace cosc4353_UnitTests
             // login with any returning user
             driver.FindElement(By.Id("LoginBox")).SendKeys("InStateNoHistory");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("pwd");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
+            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
             driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
@@ -279,7 +279,7 @@ namespace cosc4353_UnitTests
             // login with any returning user
             driver.FindElement(By.Id("LoginBox")).SendKeys("InStateNoHistory");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("pwd");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
+            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
             driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
@@ -312,7 +312,7 @@ namespace cosc4353_UnitTests
             // login with any returning user
             driver.FindElement(By.Id("LoginBox")).SendKeys("InStateNoHistory");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("pwd");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
+            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
             driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
@@ -339,7 +339,7 @@ namespace cosc4353_UnitTests
             // login with any returning user
             driver.FindElement(By.Id("LoginBox")).SendKeys("InStateHistory");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("pwd");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
+            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
             driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
