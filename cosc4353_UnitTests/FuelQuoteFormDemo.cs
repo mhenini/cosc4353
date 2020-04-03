@@ -8,7 +8,7 @@ using OpenQA.Selenium.Support.UI;
 namespace cosc4353_UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class FuelQuoteFormDemo
     {
         WebDriverWait wait;
 
