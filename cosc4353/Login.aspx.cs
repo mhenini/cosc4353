@@ -41,10 +41,10 @@ namespace cosc4353
                     switch(conf.ToUpper())
                     {
                         case "Y":
-                            Response.Redirect("Profile.aspx");
+                            Response.Redirect("ProfileForm.aspx");
                             break;
                         case "N":
-                            Response.Redirect("ProfileForm.aspx");
+                            Response.Redirect("Profile.aspx");
                             break;
                         default:
                             Label6.Text = "Please enter Y or N for the Login Box"; 

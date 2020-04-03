@@ -28,12 +28,15 @@ namespace cosc4353
             connection.Open();
             SqlCommand com = new SqlCommand("SELECT FullName, Address1, Address2, City, State, Zipcode FROM ClientInfo WHERE Username = '" + user + "'", connection);
             SqlDataReader reader = com.ExecuteReader();
-            FullName = reader.GetString(0);
-            Address1 = reader.GetString(1);
-            Address2 = reader.GetString(2);
-            City = reader.GetString(3);
-            State = reader.GetString(4);
-            Zipcode = reader.GetString(5);
+            while (reader.Read())
+            {
+                FullName = reader.GetString(0);
+                Address1 = reader.GetString(1);
+                Address2 = reader.GetString(2);
+                City = reader.GetString(3);
+                State = reader.GetString(4);
+                Zipcode = reader.GetString(5);
+            }
             connection.Close();
 
             welcome.Text = "Welcome " + FullName + "!";
