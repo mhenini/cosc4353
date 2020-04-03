@@ -39,8 +39,6 @@ namespace cosc4353
             driver.FindElement(By.Id("PassWordBox")).SendKeys("houston1998");
             driver.FindElement(By.Id("resText")).SendKeys("Y");
             driver.FindElement(By.Id("loginButton")).Click();
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
-            driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
 
         }
 
@@ -51,11 +49,9 @@ namespace cosc4353
 
             //Input valid values and proceeds to redirect to Profile.aspx
             driver.FindElement(By.Id("LoginBox")).SendKeys("houCougars");
-            driver.FindElement(By.Id("PassWordBox")).SendKeys("houston19998");
+            driver.FindElement(By.Id("PassWordBox")).SendKeys("houston1998");
             driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
-            driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
 
         }
 
@@ -86,6 +82,51 @@ namespace cosc4353
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("Label6")));
             driver.FindElement(By.Id("LoginBox")).Clear();
+
+        }
+
+        [Test]
+        public void Valid_Registration()
+        {
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+
+            //Input valid values and sucessfull registers client
+            driver.FindElement(By.Id("TxtBoxNewU")).SendKeys("sd2020");
+            driver.FindElement(By.Id("TextBoxNewPass")).SendKeys("spring2020");
+            driver.FindElement(By.Id("ConfirmTextBox1")).SendKeys("spring2020");
+            driver.FindElement(By.Id("RegButton")).Click();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("Label7")));
+
+        }
+
+        [Test]
+        public void invalidUser_Registration()
+        {
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+
+            //Input an existing user into registration
+            driver.FindElement(By.Id("TxtBoxNewU")).SendKeys("houCougars");
+            driver.FindElement(By.Id("TextBoxNewPass")).SendKeys("spring2020");
+            driver.FindElement(By.Id("ConfirmTextBox1")).SendKeys("spring2020");
+            driver.FindElement(By.Id("RegButton")).Click();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("Label7")));
+            driver.FindElement(By.Id("TxtBoxNewU")).Clear();
+
+        }
+
+        [Test]
+        public void NonMatchingPass_Registration()
+        {
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+
+            //Input incorrect passwords while registering
+            driver.FindElement(By.Id("TxtBoxNewU")).SendKeys("sd2020");
+            driver.FindElement(By.Id("TextBoxNewPass")).SendKeys("spring");
+            driver.FindElement(By.Id("ConfirmTextBox1")).SendKeys("spring2020");
+            driver.FindElement(By.Id("RegButton")).Click();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("Label7")));
+            driver.FindElement(By.Id("TxtBoxNewPass")).Clear();
+            driver.FindElement(By.Id("ConfirmTextBox1")).Clear();
 
         }
 
