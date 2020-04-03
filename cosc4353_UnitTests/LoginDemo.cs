@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Linq;
 using System.Web;
-using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium.Support.UI;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace cosc4353
+namespace cosc4353_UnitTests
 {
+    [TestClass]
     public class LoginDemo
     {
         WebDriverWait wait;
         private IWebDriver driver;
 
-        [SetUp]
+        [TestInitialize]
         public void SetupTest()
         {
             // works but must have 2nd visual studio running with actual project
@@ -29,7 +30,7 @@ namespace cosc4353
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("loginButton")));
         }
 
-        [Test]
+        [TestMethod]
         public void NewLogin_ValidInput()
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
@@ -39,27 +40,26 @@ namespace cosc4353
             driver.FindElement(By.Id("PassWordBox")).SendKeys("houston1998");
             driver.FindElement(By.Id("resText")).SendKeys("Y");
             driver.FindElement(By.Id("loginButton")).Click();
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
-            driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("fname")));            
 
         }
 
-        [Test]
+        [TestMethod]
         public void ReturnLogin_ValidInput()
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
 
             //Input valid values and proceeds to redirect to Profile.aspx
             driver.FindElement(By.Id("LoginBox")).SendKeys("houCougars");
-            driver.FindElement(By.Id("PassWordBox")).SendKeys("houston19998");
+            driver.FindElement(By.Id("PassWordBox")).SendKeys("houston1998");
             driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
-            driver.FindElement(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")).Click();
+            
 
         }
 
-        [Test]
+        [TestMethod]
         public void Invalid_LoginPass()
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
@@ -74,7 +74,7 @@ namespace cosc4353
 
         }
 
-        [Test]
+        [TestMethod]
         public void Invalid_LoginUserorPass()
         {
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
@@ -89,10 +89,10 @@ namespace cosc4353
 
         }
 
-        [TearDown]
+        [TestCleanup]
         public void closeBrowser()
         {
-            driver.Close();
+            driver.Quit();
         }
 
 
