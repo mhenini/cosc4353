@@ -364,5 +364,38 @@ namespace cosc4353_UnitTests
         {
             driver.Quit();
         }
+
+        [TestMethod]
+        public void ProfileForm_invalidinput()
+        {
+
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+
+            // register new user
+            driver.FindElement(By.Id("TxtBoxNewU")).SendKeys("formtest");
+            driver.FindElement(By.Id("TextBoxNewPass")).SendKeys("formpass");
+            driver.FindElement(By.Id("ConfirmTextBox1")).SendKeys("formpass");
+            driver.FindElement(By.Id("RegButton")).Click();
+
+            // login with new username and password
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='LoginBox']")));
+            driver.FindElement(By.Id("LoginBox")).SendKeys("formtest");
+            driver.FindElement(By.Id("PassWordBox")).SendKeys("formpass");
+            driver.FindElement(By.Id("resText")).SendKeys("Y");
+            driver.FindElement(By.Id("loginButton")).Click();
+
+            // enter information to profile page
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='PerInfo']")));
+            driver.FindElement(By.Id("fname")).SendKeys("Testing 123");
+            driver.FindElement(By.Id("Addy1")).SendKeys("456 Testing ln.");
+            driver.FindElement(By.Id("city")).SendKeys("Checkville");
+            var selectelement = new SelectElement(driver.FindElement(By.Id("state")));
+            selectelement.SelectByValue("TX");
+            driver.FindElement(By.Id("zip")).SendKeys("123456");
+            driver.FindElement(By.Id("formSubmit")).Click();
+
+            // if successful, application will go to the profile page
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
+        }
     }
 }
