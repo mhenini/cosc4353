@@ -88,6 +88,51 @@ namespace cosc4353_UnitTests
             driver.FindElement(By.Id("LoginBox")).Clear();
 
         }
+        
+        [TestMethod]
+        public void Registration()
+        {
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+
+            //Input valid values for Registration"
+            driver.FindElement(By.Id("TxtBoxNewU")).SendKeys("sd2020");
+            driver.FindElement(By.Id("TextBoxNewPass")).SendKeys("fall2020");
+            driver.FindElement(By.Id("ConfirmTextBox1")).SendKeys("fall2020");
+            driver.FindElement(By.Id("RegButton")).Click();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("Label7")));
+
+        }
+
+        [TestMethod]
+        public void ExisitngUser_Reg()
+        {
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+
+            //Input exisitng user and error message will dsiplay
+            driver.FindElement(By.Id("TxtBoxNewU")).SendKeys("houCougars");
+            driver.FindElement(By.Id("TextBoxNewPass")).SendKeys("fall2020");
+            driver.FindElement(By.Id("ConfirmTextBox1")).SendKeys("fall2020");
+            driver.FindElement(By.Id("RegButton")).Click();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("Label7")));
+            driver.FindElement(By.Id("TxtBoxNewU")).Clear();
+
+        }
+
+        [TestMethod]
+        public void NonMatchingPass_Reg()
+        {
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+
+            //Input exisitng user and error message will dsiplay
+            driver.FindElement(By.Id("TxtBoxNewU")).SendKeys("sd2020");
+            driver.FindElement(By.Id("TextBoxNewPass")).SendKeys("fall");
+            driver.FindElement(By.Id("ConfirmTextBox1")).SendKeys("fall2020");
+            driver.FindElement(By.Id("RegButton")).Click();
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("Label7")));
+            driver.FindElement(By.Id("TextBoxNewPass")).Clear();
+            driver.FindElement(By.Id("ConfirmTextBox1")).Clear();
+
+        }
 
         [TestCleanup]
         public void closeBrowser()
