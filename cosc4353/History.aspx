@@ -11,7 +11,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
 
-    body, html {height: 100%;}
+    body, html {height: 100vh;}
 
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -32,9 +32,8 @@
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
-      min-height: 100%;
-      margin-bottom: -9999px;
-      padding-bottom: 9999px;
+      height: 100vh;
+      overflow: hidden;
     }
 
     .active {
@@ -42,8 +41,13 @@
     }
 
     .frontpart {
-        min-height: 100%;
+        height: auto;
         overflow: hidden;
+    }
+
+    .mainbody {
+        padding: 40px;
+        justify-content: space-evenly;
     }
     
     /* Set black background color, white text and some padding */
@@ -60,7 +64,7 @@
         height: auto;
         padding-top: 15px;
       }
-      .row.content {height:100%;} 
+      .row.content {height:auto;} 
     }
   </style>
 </head>
@@ -79,42 +83,39 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="Profile.aspx">Profile</a></li>
-        <li class="active"><a href="#">History</a></li>
+        <li class="active"><a href="History.aspx">History</a></li>
         <li><a href="Form.aspx">Fuel Quote</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="Login.aspx"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="Login.aspx"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
       </ul>
     </div>
   </div>
 </nav>
   
-<div class="container-fluid text-center frontpart">    
-  <div class="row">
-    <div class="col-sm-2 sidenav"></div>
-    <div class="col-sm-8"> 
-      <h1>Quote Price History</h1>
-      <hr style="color:lightblue;">
-      <br>
-      <br>
-      <h4>Fuel Quote From: 12/24/2019</h4>
-      <ul class="list-group list-group-horizontal">
-      <li class="list-group-item">Requested: 11 Gallons</li>
-      <li class="list-group-item">Deliver Address: 534 Trace Ln.</li>
-      <li class="list-group-item">Delivery Date: 01/23/2020</li>
-      <li class="list-group-item">Suggested Price: $50</li>
-      </ul>
-      <h2>Test to see if C# code is working</h2>
-      <p>
-          This is an0other test <br />
-          That I wanted to do
-      </p>
-      <asp:Label id="text1" Text=" " runat="server"></asp:Label>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 sidenav"></div>
+            <div class="col-sm-8 text-center">
+                <div class="jumbotron">
+                    <h1>Fuel Quote History</h1>
+                </div>
+                <br />
+                <br />
+                <br />
+                <form runat="server" id="HistoryForm">
+                    <table id="table1" class="table" runat="server">
+                        <tr>
+                            <td>
+                                <asp:GridView ID="HistoryGrid" runat="server" CssClass="table table-responsive table-bordered"></asp:GridView>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <div class="col-sm-2 sidenav"></div>
+        </div>
     </div>
-    <div class="col-sm-2 sidenav">
-    </div>
-  </div>
-</div>
 
 
 </body>

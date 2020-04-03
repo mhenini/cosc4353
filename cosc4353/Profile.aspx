@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="cosc4353.Profile" %>
 
-<!DOCTYPE html>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,7 +97,7 @@
 <div class="container-fluid text-center frontpart">    
   <div class="row">
       <div class="col-sm-2 sidenav"></div>
-      <div class="col-sm-8">
+      <div class="col-sm-8 text-center">
           <div class="row text-left">
               <div class="col-sm-12">
                   <br />
@@ -106,7 +105,7 @@
                   <asp:Label ID="welcome" Font-Size="XX-Large" runat="server" Text="Welcome!"></asp:Label>
               </div>
           </div>
-          <div class="row">
+          <div class="row text-center">
               <hr />
               <br />
               <br />
@@ -114,24 +113,55 @@
                   <p><a href="Change_Password.aspx"><span class="glyphicon-pencil"> Change Password</span></a></p>
               </div>
           </div>
-          <div class="row">
-              <div class="col-md-4">
-                  <div class="card">
-                      <div class="view overlay">
-                          <img class="card-img-top" src="clock.png" alt="Card image cap"/>
-                          <a>
-                              <div class="mask waves-effect waves-light rgba-white-slight"></div>
-                          </a>
-                      </div>
-                      <div class="card-body">
-                          <h4 class="card-title">Recent Activity</h4>
-                          <hr />
-                          <a class="link-text">
-                              <h5>Go to History Page<i class="fas fa-angle-double-right ml-2"></i></h5>
-                          </a>
-                      </div>
+          <br />
+          <br />
+          <div class="row text-center">
+              <div class="col-sm-4 text-center">
+                  <a href="History.aspx" class="btn btn-primary">View Quote History</a>
+              </div>
+              <div class="col-sm-offset-4 text-center">
+                  <a href="History.aspx" class="btn btn-primary">View Quote History</a>
+              </div>
+          </div>
+          <br />
+          <br />
+          <div class="container-fluid" style="border-style:groove;">
+              <div class="row text-center">
+                  <div class="col-sm-12 text-center">
+                      <h3>Profile Information</h3>
+                      <hr />
                   </div>
               </div>
+              <br />
+              <div class="row text-center">
+                  <div class="col-sm-4 text-center">
+                      <h4>Address1: </h4>
+                      <asp:Label ID="Add1" Text="NA" runat="server"></asp:Label>
+                  </div>
+                  <div class="col-sm-offset-4 text-center">
+                      <h4>City: </h4>
+                      <asp:Label ID="cit" Text="NA" runat="server"></asp:Label>
+                  </div>
+              </div>
+              <br />
+              <div class="row text-center">
+                  <div class="col-sm-4 text-center">
+                      <h4>Address2: </h4>
+                      <asp:Label ID="Add2" Text="" runat="server"></asp:Label>
+                  </div>
+                  <div class="col-sm-offset-4 text-center">
+                      <h4>State: </h4>
+                      <asp:Label ID="ste" Text="NA" runat="server"></asp:Label>
+                  </div>
+              </div>
+              <br />
+              <div class="row text-center">
+                  <div class="col-sm-offset-4 text-center">
+                      <h4>Zip: </h4>
+                      <asp:Label ID="zip" Text="NA" runat="server"></asp:Label>
+                  </div>
+              </div>
+              <br />
           </div>
       </div>
       <div class="col-sm-2 sidenav"></div>

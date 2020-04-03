@@ -20,9 +20,9 @@ namespace cosc4353
 
         protected void loginButton_Click(object sender, EventArgs e)
         {
-            SqlConnection link = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginPageConnectionString"].ConnectionString);
+            SqlConnection link = new SqlConnection(ConfigurationManager.ConnectionStrings["fuelSite"].ConnectionString);
             link.Open();
-            string verifyUser = "select count(*) FROM login WHERE username= '" + LoginBox.Text + "'";
+            string verifyUser = "select count(*) FROM Login WHERE Username= '" + LoginBox.Text + "'";
             SqlCommand com = new SqlCommand(verifyUser, link);
             int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
             link.Close();
@@ -32,7 +32,7 @@ namespace cosc4353
                 link.Open();
                 string verifyPass = "select password FROM login WHERE username= '" + LoginBox.Text + "'";
                 SqlCommand passCom = new SqlCommand(verifyPass, link);
-                string password = passCom.ExecuteScalar().ToString();
+                string password = passCom.ExecuteScalar().ToString().Trim();
                 string conf = resText.Text;
 
                 if(password == PassWordBox.Text)   // if username and password are correct, redirect user to profile page
@@ -77,9 +77,9 @@ namespace cosc4353
         protected void RegButton_Click(object sender, EventArgs e)
         {
 
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginPageConnectionString"].ConnectionString);
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["fuelSite"].ConnectionString);
             con.Open();
-            string verifyUser = "select count(*) FROM login WHERE username= '" + TxtBoxNewU.Text + "'";
+            string verifyUser = "select count(*) FROM Login WHERE Username= '" + TxtBoxNewU.Text + "'";
             SqlCommand com = new SqlCommand(verifyUser, con);
             int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
             con.Close();
@@ -105,11 +105,10 @@ namespace cosc4353
 
                 else      // adds the username and password into the db
                 {
-                    string insertQuery = "insert into login (username,password,confirmPassword) values (@user, @password, @cpass)";
+                    string insertQuery = "insert into login (username,password) values (@user, @password)";
                     SqlCommand comm = new SqlCommand(insertQuery, con);
                     comm.Parameters.AddWithValue("@user", TxtBoxNewU.Text);
                     comm.Parameters.AddWithValue("@password", TextBoxNewPass.Text);
-                    comm.Parameters.AddWithValue("@cpass", ConfirmTextBox1.Text);
                     comm.ExecuteNonQuery();
                     Label7.Text = "Registraion is Sucessful. Please login now.";
                     Label7.Visible = true;
