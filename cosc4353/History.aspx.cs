@@ -22,6 +22,9 @@ namespace cosc4353
         {
             user = (string)Session["user"];
             DataSet HistoryData = GetData();
+            bool hasRows = HistoryData.Tables.Cast<DataTable>()
+                               .Any(table => table.Rows.Count != 0);
+            if (hasRows) { None.Visible = false; }
             HistoryGrid.DataSource = HistoryData;
             HistoryGrid.DataBind();
             

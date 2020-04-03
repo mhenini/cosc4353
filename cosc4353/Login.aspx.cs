@@ -112,7 +112,6 @@ namespace cosc4353
                     comm.ExecuteNonQuery();
                     Label7.Text = "Registraion is Sucessful. Please login now.";
                     Label7.Visible = true;
-
                 }
                 
             }
@@ -123,13 +122,6 @@ namespace cosc4353
                 Label7.Visible = true;
 
             }
-
-
-
-
-
-
-
         }
     }
 }
