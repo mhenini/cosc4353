@@ -115,14 +115,7 @@
           </div>
           <br />
           <br />
-          <div class="row text-center">
-              <div class="col-sm-4 text-center">
-                  <a href="History.aspx" class="btn btn-primary">View Quote History</a>
-              </div>
-              <div class="col-sm-offset-4 text-center">
-                  <a href="History.aspx" class="btn btn-primary">View Quote History</a>
-              </div>
-          </div>
+          <br />
           <br />
           <br />
           <div class="container-fluid" style="border-style:groove;">

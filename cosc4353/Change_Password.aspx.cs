@@ -28,7 +28,7 @@ namespace cosc4353
             }
             else if (newpass == confirmpass)
             {
-                SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginPageConnectionString"].ConnectionString);
+                SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["HistoryConnection"].ConnectionString);
                 connection.Open();
                 string changepassquery = "UPDATE login SET password = '" + newpass + "' WHERE username = '" + user + "'";
                 SqlCommand command = new SqlCommand(changepassquery, connection);
@@ -43,7 +43,7 @@ namespace cosc4353
         protected void Page_Load(object sender, EventArgs e)
         {
             user = (string)Session["user"];
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["LoginPageConnectionString"].ConnectionString);
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["HistoryConnection"].ConnectionString);
             connection.Open();
             string PassSearchQuery = "select password FROM login WHERE username= '" + user + "'";
             SqlCommand cmd = new SqlCommand(PassSearchQuery, connection);

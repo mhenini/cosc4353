@@ -32,7 +32,14 @@ namespace cosc4353
             {
                 FullName = reader.GetString(0);
                 Address1 = reader.GetString(1);
-                Address2 = reader.GetString(2);
+                if(reader["Address2"] == DBNull.Value)
+                {
+                    Address2 = "";
+                }
+                else
+                {
+                    Address2 = reader.GetString(2);
+                }
                 City = reader.GetString(3);
                 State = reader.GetString(4);
                 Zipcode = reader.GetString(5);

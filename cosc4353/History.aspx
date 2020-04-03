@@ -103,6 +103,7 @@
                 <br />
                 <br />
                 <br />
+                <asp:Label runat="server" ID="None" Visible="true" Text="There are currently no previous quotes"></asp:Label>
                 <form runat="server" id="HistoryForm">
                     <table id="table1" class="table" runat="server">
                         <tr>
