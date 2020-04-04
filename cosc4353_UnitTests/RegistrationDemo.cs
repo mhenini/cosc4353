@@ -7,6 +7,7 @@ using OpenQA.Selenium.Support.UI;
 
 namespace cosc4353_UnitTests
 {
+    [TestClass]
     public class RegistrationDemo
     {
 
@@ -27,7 +28,7 @@ namespace cosc4353_UnitTests
         }
 
         [TestMethod]
-        public void Registration_invalidInput()
+        public void Profile_invalidInput()
         {
             // initialize input string that contain values longer than the allowed length
             string name = "randomtestrandomtestrandomtestrandomtestrandomtestrandomtest";
@@ -46,14 +47,14 @@ namespace cosc4353_UnitTests
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
 
             // register new user
-            driver.FindElement(By.Id("TxtBoxNewU")).SendKeys("formtest2");
+            driver.FindElement(By.Id("TxtBoxNewU")).SendKeys("formtest3");
             driver.FindElement(By.Id("TextBoxNewPass")).SendKeys("formpass");
             driver.FindElement(By.Id("ConfirmTextBox1")).SendKeys("formpass");
             driver.FindElement(By.Id("RegButton")).Click();
 
             // login with new username and password
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='LoginBox']")));
-            driver.FindElement(By.Id("LoginBox")).SendKeys("formtest2");
+            driver.FindElement(By.Id("LoginBox")).SendKeys("formtest3");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("formpass");
             driver.FindElement(By.Id("resText")).SendKeys("Y");
             driver.FindElement(By.Id("loginButton")).Click();
@@ -80,17 +81,28 @@ namespace cosc4353_UnitTests
 
             // Error message should pop up saying the zip code is too long
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='errormsg']")));
+            
+            // Testing name, address and city character length to see if they are within allowed limits
+            string name_postSubmit = driver.FindElement(By.Id("fname")).Text;
+            string address_postSubmit = driver.FindElement(By.Id("Addy1")).Text;
+            string city_postSubmit = driver.FindElement(By.Id("city")).Text;
+
+            if(address_postSubmit.Length > 100 || city_postSubmit.Length > 100 || name_postSubmit.Length > 50)
+            {
+                Assert.Fail("Address or City variable over allowed limit of characters.");
+            }
+
         }
 
         [TestMethod]
-        public void Registration_validInput()
+        public void Profile_validInput()
         {
 
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
 
             // login with new username and password registered from previous test
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='LoginBox']")));
-            driver.FindElement(By.Id("LoginBox")).SendKeys("formtest2");
+            driver.FindElement(By.Id("LoginBox")).SendKeys("formtest3");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("formpass");
             driver.FindElement(By.Id("resText")).SendKeys("Y");
             driver.FindElement(By.Id("loginButton")).Click();
@@ -109,6 +121,10 @@ namespace cosc4353_UnitTests
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
         }
 
-        
+        [TestCleanup]
+        public void CleanupTest()
+        {
+            driver.Quit();
+        }
     }
 }
