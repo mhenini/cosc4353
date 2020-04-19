@@ -103,7 +103,11 @@
 
 
         <p><strong>
-            First Login(Y/N):<asp:TextBox ID="resText" runat="server"></asp:TextBox>
+            First Login(Y/N):
+              <select id ="resText" runat="server">
+                <option value="y">Yes</option>
+                <option value="n">No</option>
+              </select>
         </strong>
           <span style ="margin-left: 6.5em;">
         <strong><asp:Label ID="Label5" runat="server" Text="Confirm Password:"></asp:Label>
