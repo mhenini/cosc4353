@@ -25,10 +25,6 @@ namespace cosc4353
             string verifyUser = "select count(*) FROM Login WHERE Username= '" + LoginBox.Text + "'";
             SqlCommand com = new SqlCommand(verifyUser, link);
             int temp = Convert.ToInt32(com.ExecuteScalar().ToString());
-
-            string verifyUser2 = "select count(*) FROM Login WHERE Username= '" + LoginBox.Text + "'";
-            SqlCommand com2 = new SqlCommand(verifyUser, link);
-            int temp2 = Convert.ToInt32(com.ExecuteScalar().ToString());
             link.Close();
 
             if(temp == 1)    // checks db to see in username exist
@@ -37,7 +33,7 @@ namespace cosc4353
                 string verifyPass = "select password FROM login WHERE username= '" + LoginBox.Text + "'";
                 SqlCommand passCom = new SqlCommand(verifyPass, link);
                 string password = passCom.ExecuteScalar().ToString().Trim();
-                string conf = resText.Text;
+                string conf = String.Format("{0}", Request.Form["resText"]);
 
                 if(password == PassWordBox.Text)   // if username and password are correct, redirect user to profile page
                 {

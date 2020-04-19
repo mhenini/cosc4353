@@ -24,7 +24,7 @@
     .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
-      height: 100%;
+      height: 100vh;
     }
     
     /* Set black background color, white text and some padding */
@@ -104,13 +104,11 @@
 
         <p><strong>
             First Login(Y/N):
-              <select id ="resText" runat="server">
+             <select id ="resText" runat="server">
                 <option value="y">Yes</option>
                 <option value="n">No</option>
               </select>
-        </strong>
-          <span style ="margin-left: 6.5em;">
-        <strong><asp:Label ID="Label5" runat="server" Text="Confirm Password:"></asp:Label>
+           </strong><span style ="margin-left: 17em;"><strong><asp:Label ID="Label5" runat="server" Text="Confirm Password:"></asp:Label>
             <asp:TextBox ID="ConfirmTextBox1" runat="server" TextMode="Password"></asp:TextBox>
             </strong>
          </span></p>
