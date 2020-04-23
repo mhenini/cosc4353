@@ -103,7 +103,7 @@
 
 
         
-            <span style ="margin-left: 17em;"><strong><asp:Label ID="Label5" runat="server" Text="Confirm Password:"></asp:Label>
+            <span style ="margin-left: 29em;"><strong><asp:Label ID="Label5" runat="server" Text="Confirm Password:"></asp:Label>
             <asp:TextBox ID="ConfirmTextBox1" runat="server" TextMode="Password"></asp:TextBox>
             </strong>
          </span></p>
