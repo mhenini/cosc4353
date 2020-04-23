@@ -56,7 +56,6 @@ namespace cosc4353_UnitTests
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='LoginBox']")));
             driver.FindElement(By.Id("LoginBox")).SendKeys("formtest3");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("formpass");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
             driver.FindElement(By.Id("loginButton")).Click();
 
             // Enter information to profile page. For all input boxes, excluding State and Zip boxes, the input box will not allow user to input more than the specified characters.
@@ -104,7 +103,6 @@ namespace cosc4353_UnitTests
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='LoginBox']")));
             driver.FindElement(By.Id("LoginBox")).SendKeys("formtest3");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("formpass");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
             driver.FindElement(By.Id("loginButton")).Click();
 
             // enter information to profile page

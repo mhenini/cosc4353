@@ -38,7 +38,6 @@ namespace cosc4353_UnitTests
             //Input valid values and proceeds to redirect to ProfileForm.aspx
             driver.FindElement(By.Id("LoginBox")).SendKeys("houCougars");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("houston1998");
-            driver.FindElement(By.Id("resText")).SendKeys("Y");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("fname")));            
 
@@ -50,9 +49,8 @@ namespace cosc4353_UnitTests
             wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
 
             //Input valid values and proceeds to redirect to Profile.aspx
-            driver.FindElement(By.Id("LoginBox")).SendKeys("houCougars");
-            driver.FindElement(By.Id("PassWordBox")).SendKeys("houston1998");
-            driver.FindElement(By.Id("resText")).SendKeys("N");
+            driver.FindElement(By.Id("LoginBox")).SendKeys("a");
+            driver.FindElement(By.Id("PassWordBox")).SendKeys("a");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id='myNavbar']/ul[1]/li[3]/a")));
             
@@ -67,7 +65,6 @@ namespace cosc4353_UnitTests
             //Input invalid values and displays an "incorrect password"
             driver.FindElement(By.Id("LoginBox")).SendKeys("houCougars");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("houston");
-            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("Label6")));
             driver.FindElement(By.Id("PassWordBox")).Clear();
@@ -82,7 +79,6 @@ namespace cosc4353_UnitTests
             //Input invalid values and displays an "Invalid Username or Password"
             driver.FindElement(By.Id("LoginBox")).SendKeys("bsmith25");
             driver.FindElement(By.Id("PassWordBox")).SendKeys("houston");
-            driver.FindElement(By.Id("resText")).SendKeys("N");
             driver.FindElement(By.Id("loginButton")).Click();
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("Label6")));
             driver.FindElement(By.Id("LoginBox")).Clear();
