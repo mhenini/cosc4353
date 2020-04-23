@@ -31,29 +31,23 @@ namespace cosc4353
             {
                 link.Open();
                 string verifyPass = "select password FROM login WHERE username= '" + LoginBox.Text + "'";
+                string verifyFirst = "select count(*) FROM ClientInfo WHERE username= '" + LoginBox.Text + "'";
                 SqlCommand passCom = new SqlCommand(verifyPass, link);
+                SqlCommand firstCom = new SqlCommand(verifyFirst, link);
                 string password = passCom.ExecuteScalar().ToString().Trim();
-                string conf = String.Format("{0}", Request.Form["resText"]);
+                int firstcheck = Convert.ToInt32(firstCom.ExecuteScalar().ToString());
 
-                if(password == PassWordBox.Text)   // if username and password are correct, redirect user to profile page
+                if (password == PassWordBox.Text)   // if username and password are correct, redirect user to profile page
                 {
                     Session["user"] = LoginBox.Text;
-                    switch(conf.ToUpper())
+                    if (firstcheck > 0)
                     {
-                        case "Y":
-                            Response.Redirect("ProfileForm.aspx");
-                            break;
-                        case "N":
-                            Response.Redirect("Profile.aspx");
-                            break;
-                        default:
-                            Label6.Text = "Please enter Y or N for the Login Box"; 
-                            Label6.Visible = true;
-                            break;
-
+                        Response.Redirect("Profile.aspx");
                     }
-                  
-                    
+                    else
+                    {
+                        Response.Redirect("ProfileForm.aspx");
+                    }                    
                 }
                 else
                 {
